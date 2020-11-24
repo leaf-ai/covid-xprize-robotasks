@@ -37,7 +37,8 @@ which python
 which pip
 python --version
 pip --version
-pip show pandas
+# TODO: This next line is probably not needed for the sandbox since pandas is already present
+pip install pandas==1.1.4
 python "$generate_predictions_wrapper" \
   --requested-predictions-file "$predictions_file" \
   --prediction-module "$prediction_module"
