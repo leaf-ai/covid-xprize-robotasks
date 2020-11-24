@@ -15,27 +15,26 @@ set -o xtrace
 # The script is then run.
 
 # Get latest from github as a zip file and extract it to user home directory
-cd "$HOME" || exit 1
-curl -sLo covid-xprize-robotasks.zip https://github.com/leaf-ai/covid-xprize-robotasks/archive/cron-solution.zip
-unzip covid-xprize-robotasks.zip
+repo_name="covid-xprize-robotasks"
+branch="cron-solution"
+repo_dir="$HOME/work/$repo_name-$branch"
+curl -sLo "$HOME/covid-xprize-robotasks.zip" https://github.com/leaf-ai/covid-xprize-robotasks/archive/$branch.zip
+unzip -od "$HOME/work" covid-xprize-robotasks.zip
 
 # Locations of tasks and predict.py module
-predictions_file="$HOME/covid-xprize-robotasks/judging/tasks.csv"
-generate_predictions_wrapper="$HOME/covid-xprize-robotasks/judging/generate_predictions_local.py"
+predictions_file="$repo_dir/judging/tasks.csv"
+generate_predictions_wrapper="$repo_dir/judging/generate_predictions_local.py"
 prediction_module="$HOME/work/predict.py"
-
-# TODO: activate venv required?
-
-which python3
-which pip3
-python3 --version
-pip3 --version
-pip3 show pandas
 
 # Run script
 # Need to set up these env vars as cron has a restricted PATH by default
 export PATH=/usr/local/bin/:$PATH
 export PYTHONPATH=/usr/local/lib/python3.7/site-packages
+which python
+which pip
+python --version
+pip --version
+pip show pandas
 python "$generate_predictions_wrapper" \
   --requested-predictions-file "$predictions_file" \
   --prediction-module "$prediction_module"
