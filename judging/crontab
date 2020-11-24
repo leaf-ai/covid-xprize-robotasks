@@ -1,0 +1,2 @@
+* * * * * root /usr/bin/flock -w 0 /tmp/generate_predictions.lock /usr/bin/judging/generate_predictions.sh > /var/log/generate_predictions.log 2>&1
+# Don't remove the empty line at the end of this file. It is required to run the cron job
