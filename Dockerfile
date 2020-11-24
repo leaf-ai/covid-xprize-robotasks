@@ -9,10 +9,6 @@ WORKDIR $HOME_DIR
 RUN apt-get update -yqq && \
     apt-get -yqq --no-install-recommends --no-install-suggests install cron python3-pip
 
-# Python requirements
-COPY ./judging/requirements.txt $HOME_DIR/
-RUN pip3 install -r requirements.txt
-
 # add cron job
 COPY ./judging/crontab /etc/cron.d/generate_predictions
 
