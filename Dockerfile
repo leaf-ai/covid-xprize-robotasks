@@ -1,11 +1,16 @@
 FROM python:3.7-stretch
 
+# todo: should be user home dir
+ENV HOME_DIR=/root
+
+WORKDIR $HOME_DIR
+
 # install cron
 RUN apt-get update -yqq && \
     apt-get -yqq --no-install-recommends --no-install-suggests install cron python3-pip
 
 # Python requirements
-COPY ./judging/requirements.txt $HOME/
+COPY ./judging/requirements.txt $HOME_DIR/
 RUN pip3 install -r requirements.txt
 
 # add cron job
@@ -19,10 +24,10 @@ RUN touch /var/log/generate_predictions.log
 
 # Copy dummy predict script to $HOME to simulate user sandbox layout
 # Remove this for real sandbox -- user must supply predict.py
-COPY ./judging/predict.py $HOME/work/predict.py
+COPY ./judging/predict.py $HOME_DIR/work/predict.py
 
 # Copy prediction generation scripts
-RUN mkdir -p /usr/bin/judging $HOME/work
+RUN mkdir -p /usr/bin/judging $HOME_DIR/work
 COPY ./judging/scripts/generate_predictions.sh /usr/bin/judging/
 RUN chmod +x /usr/bin/judging/generate_predictions.sh
 

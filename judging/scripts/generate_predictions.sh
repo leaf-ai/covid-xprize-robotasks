@@ -17,12 +17,12 @@ set -o xtrace
 # Get latest from github as a zip file and extract it to user home directory
 repo_name="covid-xprize-robotasks"
 branch="cron-solution"
-repo_dir="$HOME/work/$repo_name-$branch"
+repo_dir="$HOME/repo/$repo_name-$branch"
 curl -sLo "$HOME/covid-xprize-robotasks.zip" https://github.com/leaf-ai/covid-xprize-robotasks/archive/$branch.zip
-unzip -od "$HOME/work" covid-xprize-robotasks.zip
+unzip -od "$HOME/repo/" covid-xprize-robotasks.zip
 
 # Locations of tasks and predict.py module
-predictions_file="$repo_dir/judging/tasks.csv"
+predictions_file="$repo_dir/tasks/tasks.csv"
 generate_predictions_wrapper="$repo_dir/judging/generate_predictions_local.py"
 prediction_module="$HOME/work/predict.py"
 
