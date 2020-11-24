@@ -1,18 +1,20 @@
 #!/usr/bin/env bash
 
-# See https://www.gnu.org/software/bash/manual/html_node/The-Set-Builtin.html for what these do
-#set -o errexit
-set -o errtrace
-set -o nounset
-set -o pipefail
-set -o xtrace
+# This is a wrapper script for inference (generating predictions). Ultimately it runs the local predict.py module
+# which is expected to exist. See prediction_module below.
 
-# Runs the Python script to generate predictions.
 # It is expected that cron will run this script on a schedule.
 # See generate_predictions_local.py for more information
 #
 # The latest script is pulled from github, along with the latest tasks list containing predictions to be generated
 # The script is then run.
+
+# See https://www.gnu.org/software/bash/manual/html_node/The-Set-Builtin.html for what these do
+set -o errexit
+set -o errtrace
+set -o nounset
+set -o pipefail
+set -o xtrace
 
 # Get latest from github as a zip file and extract it to user home directory
 repo_name="covid-xprize-robotasks"
