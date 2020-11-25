@@ -12,14 +12,10 @@ WORKDIR $HOME_DIR
 RUN apt-get update -yqq && \
     apt-get -yqq --no-install-recommends --no-install-suggests install cron python3-pip
 
-# add cron job
-COPY ./judging/crontab /etc/cron.d/generate_predictions
-
-# Give execution rights on the cron job
-RUN chmod 0644 /etc/cron.d/generate_predictions
+USER xprize
 
 # Create the log file to be able to run tail
-RUN touch /var/log/generate_predictions.log
+RUN touch /tmp/cron.log
 
 # /tasks is mounted at run time
-CMD $HOME_DIR/tasks/entrypoint.sh
+CMD $HOME_DIR/tasks/entrypoint.sh && tail -f /tmp/cron.log
