@@ -7,7 +7,7 @@
 # See generate_predictions_local.py for more information
 #
 # This script assumes the repository has been downloaded locally.
-# The script is then run.
+# The predict.py API script is then run.
 
 # See https://www.gnu.org/software/bash/manual/html_node/The-Set-Builtin.html for what these do
 set -o errexit
