@@ -12,10 +12,8 @@ WORKDIR $HOME_DIR
 RUN apt-get update -yqq && \
     apt-get -yqq --no-install-recommends --no-install-suggests install cron python3-pip
 
-USER xprize
-
 # Create the log file to be able to run tail
-RUN touch /tmp/cron.log
+RUN touch /tmp/cron.log && chown xprize:xprize /tmp/cron.log
 
-# /tasks is mounted at run time
-CMD $HOME_DIR/tasks/entrypoint.sh && tail -f /tmp/cron.log
+# /tasks is mounted at run time. Set up cron job, run cron, then drop down to unprivileged user 'xprize'
+CMD $HOME_DIR/tasks/entrypoint.sh && cron && su --login xprize
