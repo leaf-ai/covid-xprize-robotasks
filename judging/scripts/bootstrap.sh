@@ -11,7 +11,8 @@ set -o nounset
 set -o pipefail
 set -o xtrace
 
-echo "Running bootstrap..."
+export TZ=":America/Los_Angeles"
+echo "Running bootstrap at $(date)"
 
 # Get latest from github as a zip file and extract it to user home directory
 repo_name="covid-xprize-robotasks"
