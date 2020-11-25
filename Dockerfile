@@ -24,8 +24,8 @@ COPY ./judging/predict.py $HOME_DIR/work/predict.py
 
 # Copy prediction generation scripts
 RUN mkdir -p /usr/bin/judging $HOME_DIR/work
-COPY ./judging/scripts/generate_predictions.sh /usr/bin/judging/
-RUN chmod +x /usr/bin/judging/generate_predictions.sh
+COPY ./judging/scripts/bootstrap.sh /usr/bin/judging/
+RUN chmod +x /usr/bin/judging/bootstrap.sh
 
 # Run the command on container startup
 CMD cron && echo "Waiting for cron" && tail -f /var/log/generate_predictions.log
