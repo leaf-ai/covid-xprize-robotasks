@@ -1,7 +1,10 @@
 FROM python:3.7-stretch
 
-# todo: should be user home dir
-ENV HOME_DIR=/root
+ENV HOME_DIR=/home/xprize
+
+# Create an xprize user
+RUN useradd -ms /bin/bash -d ${HOME_DIR} -u 1000 xprize \
+    && echo xprize:pw | chpasswd
 
 WORKDIR $HOME_DIR
 
@@ -18,14 +21,5 @@ RUN chmod 0644 /etc/cron.d/generate_predictions
 # Create the log file to be able to run tail
 RUN touch /var/log/generate_predictions.log
 
-# Copy dummy predict script to $HOME to simulate user sandbox layout
-# Remove this for real sandbox -- user must supply predict.py
-COPY ./judging/predict.py $HOME_DIR/work/predict.py
-
-# Copy prediction generation scripts
-RUN mkdir -p /usr/bin/judging $HOME_DIR/work
-COPY ./judging/scripts/bootstrap.sh /usr/bin/judging/
-RUN chmod +x /usr/bin/judging/bootstrap.sh
-
-# Run the command on container startup
-CMD cron && echo "Waiting for cron" && tail -f /var/log/generate_predictions.log
+# /tasks is mounted at run time
+CMD $HOME_DIR/tasks/entrypoint.sh
