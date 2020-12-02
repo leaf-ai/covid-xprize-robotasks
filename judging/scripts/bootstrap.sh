@@ -30,7 +30,7 @@ rm -rf "$repo_dir"
 
 # Get local copy of repo
 archive_file="$HOME/$repo_name.tar.gz"
-wget --quiet --output-document $archive_file https://github.com/leaf-ai/$repo_name/archive/$branch.tar.gz
+wget --quiet --output-document "$archive_file" https://github.com/leaf-ai/$repo_name/archive/$branch.tar.gz
 
 # Unzip to destination directory
 mkdir -p "$repo_dir" && \
