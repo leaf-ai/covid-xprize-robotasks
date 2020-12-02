@@ -1,3 +1,2 @@
 StartDate,EndDate,IpFile,OutputFile
-2020-08-16,2020-08-30,covid-xprize-robotasks-main/examples/sample_ip.csv,work/predictions/sample_predictions.csv
-
+2020-08-01,2020-08-04,work/covid-xprize/covid_xprize/validation/data/2020-09-30_historical_ip.csv,work/predictions/sample_predictions.csv
