@@ -29,12 +29,13 @@ repo_dir="$HOME/$repo_name-$branch"
 rm -rf "$repo_dir"
 
 # Get local copy of repo
-wget --quiet --output-document "$HOME/$repo_name.zip" https://github.com/leaf-ai/$repo_name/archive/$branch.tar.gz
+archive_file="$HOME/$repo_name.tar.gz"
+wget --quiet --output-document $archive_file https://github.com/leaf-ai/$repo_name/archive/$branch.tar.gz
 
 # Unzip to destination directory
 mkdir -p "$repo_dir" && \
-  tar --overwrite --extract --directory "$HOME" --file $repo_name.zip && \
-  rm "$HOME/$repo_name.zip"
+  tar --overwrite --extract --directory "$HOME" --file "$archive_file" && \
+  rm "$archive_file"
 
 # Launch the main script
 main_script="$repo_dir"/judging/scripts/generate_predictions.sh
