@@ -38,7 +38,7 @@ def generate_predictions(requested_predictions_df: DataFrame, prediction_module:
         ip_file = row.IpFile
         output_file = row.OutputFile
 
-        LOGGER.info(f'Predicting for {start_date} to {end_date} ip file {ip_file} output {output_file}')
+        LOGGER.info(f'Running predict module {prediction_module} for {start_date} to {end_date} ip file {ip_file} output {output_file}')
         # Spawn an external process to run each predictor. In future this may be parallel and even distributed
         subprocess.call(
             [
