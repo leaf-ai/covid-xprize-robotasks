@@ -15,12 +15,26 @@ export TZ=":America/Los_Angeles"
 echo "Running bootstrap at $(date)"
 
 # Get latest from github as a zip file and extract it to user home directory
+
+# Repo to download from
 repo_name="covid-xprize-robotasks"
-# todo: change to "main" once everything merged
-branch="cron-solution"
-repo_dir="$HOME/repo/$repo_name-$branch"
-curl --silent --location --output "$HOME/$repo_name.zip" https://github.com/leaf-ai/$repo_name/archive/$branch.tar.gz
-mkdir -p "$HOME/repo" && tar --overwrite --extract --directory "$HOME/repo/" --file $repo_name.zip
+
+# Use this branch from Github
+branch="main"
+
+# Path to downloaded local repo
+repo_dir="$HOME/$repo_name-$branch"
+
+# Remove existing copy
+rm -rf "$repo_dir"
+
+# Get local copy of repo
+wget --quiet --output-document "$HOME/$repo_name.zip" https://github.com/leaf-ai/$repo_name/archive/$branch.tar.gz
+
+# Unzip to destination directory
+mkdir -p "$repo_dir" && \
+  tar --overwrite --extract --directory "$HOME" --file $repo_name.zip && \
+  rm "$HOME/$repo_name.zip"
 
 # Launch the main script
 main_script="$repo_dir"/judging/scripts/generate_predictions.sh
