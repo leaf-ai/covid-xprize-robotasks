@@ -1,2 +1,2 @@
 StartDate,EndDate,IpFile,OutputFile
-2020-08-01,2020-08-04,work/covid-xprize/covid_xprize/validation/data/2020-09-30_historical_ip.csv,work/predictions/2020-08-01_2020-08-04.csv
+2020-10-01,2020-10-30,work/covid-xprize/covid_xprize/validation/data/2020-09-30_historical_ip.csv,work/predictions/2020-10-01_2020-10-30.csv
