@@ -1,2 +1,2 @@
 StartDate,EndDate,IpFile,OutputFile
-20210101,20210114,~/covid-xprize-robotasks-main/ips/live/20201220_032059_20210101_20210114_ips.csv,~/work/predictions/20201220_032059_robojudge_live.csv
+20200101,20210619,~/covid-xprize-robotasks-main/ips/live/20201220_033007_20200101_20210619_ips.csv,~/work/predictions/20201220_033007_robojudge_live.csv
