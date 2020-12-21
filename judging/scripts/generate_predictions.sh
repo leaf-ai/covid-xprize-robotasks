@@ -38,7 +38,7 @@ wget --quiet \
 # Run script
 # Need to set up these env vars as cron has a restricted PATH by default
 export PATH=/usr/local/bin/:$PATH
-export PYTHONPATH=/usr/local/lib/python3.7/site-packages:$PYTHONPATH
+export PYTHONPATH=/usr/local/lib/python3.7/site-packages${PYTHONPATH:+:$PYTHONPATH}
 command -v python
 command -v pip
 python --version
