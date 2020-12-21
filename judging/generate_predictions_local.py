@@ -22,7 +22,7 @@ import pandas as pd
 LOGGER = logging.getLogger('robojudge')
 
 
-def generate_predictions(requested_predictions_df: DataFrame, prediction_module: str) -> None:
+def generate_predictions(requested_predictions_df: DataFrame, prediction_module: str, validation_module: str) -> None:
     """
     Generates predictions for each of the requested scenarios by invoking `prediction_module`
     :param requested_predictions_df: A Pandas DataFrame containing the predictions to be made, one per row. See sample
@@ -38,7 +38,10 @@ def generate_predictions(requested_predictions_df: DataFrame, prediction_module:
         ip_file = row.IpFile
         output_file = row.OutputFile
 
-        LOGGER.info(f'Running predict module {prediction_module} for {start_date} to {end_date} ip file {ip_file} output {output_file}')
+        LOGGER.info(
+            f'Running predict module {prediction_module} for {start_date} to {end_date} '
+            f'ip file {ip_file} output {output_file}')
+
         # Spawn an external process to run each predictor. In future this may be parallel and even distributed
         subprocess.call(
             [
@@ -50,6 +53,20 @@ def generate_predictions(requested_predictions_df: DataFrame, prediction_module:
             ]
         )
 
+        LOGGER.info(
+            f'Running validation module {validation_module} for {start_date} to {end_date} '
+            f'ip file {ip_file} output {output_file}')
+
+        # Now run validation
+        subprocess.call(
+            [
+                'python', validation_module,
+                '--start_date', start_date,
+                '--end_date', end_date,
+                '--interventions_plan', ip_file,
+                '--submission_file', output_file
+            ]
+        )
 
 def get_predictions_tasks(requested_predictions_file):
     """
@@ -83,11 +100,17 @@ def do_main():
                         required=True,
                         help="Path to the python script that should be run to generate predictions. According to the "
                              "API conversion this script should be named predict.py")
+    parser.add_argument("-v", "--validation-module",
+                        dest="validation_module",
+                        type=str,
+                        required=True,
+                        help="Path to the python script that should be run to validate predictions. Any errors found "
+                             "in the predictions file will be written to stdout")
     args = parser.parse_args()
 
     LOGGER.info(f'Generating predictions from file {args.requested_predictions_file}')
-    requested_predictions_df = get_predictions_tasks(args.requested_predictions_file, )
-    generate_predictions(requested_predictions_df, args.prediction_module)
+    requested_predictions_df = get_predictions_tasks(args.requested_predictions_file)
+    generate_predictions(requested_predictions_df, args.prediction_module, args.validation_module)
 
 
 if __name__ == '__main__':

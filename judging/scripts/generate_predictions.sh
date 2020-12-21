@@ -25,16 +25,24 @@ predictions_file="$repo_dir/tasks/tasks.csv"
 generate_predictions_wrapper="$repo_dir/judging/generate_predictions_local.py"
 prediction_module="$HOME/work/predict.py"
 
+# Get latest validation module from base library (sandboxes in general have out of date base libraries)
+# Overlays the current predictor_validation.py module in the local repo clone dir
+validation_module=$HOME/work/covid_xprize/validation/predictor_validation.py
+curl --silent --show-error --output $HOME/work/covid_xprize/validation/predictor_validation.py \
+  --request GET \
+  https://github.com/leaf-ai/covid-xprize/blob/validation-main/covid_xprize/validation/predictor_validation.py
+
 # Run script
 # Need to set up these env vars as cron has a restricted PATH by default
 export PATH=/usr/local/bin/:$PATH
-export PYTHONPATH=/usr/local/lib/python3.7/site-packages
+export PYTHONPATH=/usr/local/lib/python3.7/site-packages:$PYTHONPATH
 which python
 which pip
 python --version
 pip --version
-# TODO: This next line is probably not needed for the sandbox since pandas is already present
-pip install pandas==1.1.4
+# Make sure minimum version of Pandas is present
+pip install pandas\>=1.1.4
 python "$generate_predictions_wrapper" \
   --requested-predictions-file "$predictions_file" \
-  --prediction-module "$prediction_module"
+  --prediction-module "$prediction_module" \
+  --validation-module "$validation_module"
