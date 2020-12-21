@@ -30,7 +30,7 @@ prediction_module="$HOME/work/predict.py"
 # Overlays the current predictor_validation.py module in the local repo clone dir
 module_path="covid_xprize/validation/predictor_validation.py"
 validation_module="$HOME/work/covid-xprize/$module_path"
-branch="validation-main"
+branch="master"
 wget --quiet \
   --output-document "$validation_module" \
   https://raw.githubusercontent.com/leaf-ai/covid-xprize/$branch/$module_path
