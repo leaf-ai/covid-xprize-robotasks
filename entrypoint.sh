@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Copyright 2020 (c) Cognizant Digital Business, Evolutionary AI. All rights reserved. Issued under the Apache 2.0 License.
+
 # Start the run once job.
 echo "Docker container has been started"
 

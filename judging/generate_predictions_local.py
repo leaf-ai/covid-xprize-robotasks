@@ -3,6 +3,8 @@ Reads the "prediction dates" file locally (or from a locally visible remote moun
 and end date) requested, runs predict.py, using the supplied interventions plan, to generate the predictions.
 """
 
+# Copyright 2020 (c) Cognizant Digital Business, Evolutionary AI. All rights reserved. Issued under the Apache 2.0 License.
+
 import argparse
 import logging
 

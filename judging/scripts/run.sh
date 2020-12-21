@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# Copyright 2020 (c) Cognizant Digital Business, Evolutionary AI. All rights reserved. Issued under the Apache 2.0 License.
 
 # Landing pad for the schedule job. Does nothing but launch bootstrap for predictions *and capture logging*
 

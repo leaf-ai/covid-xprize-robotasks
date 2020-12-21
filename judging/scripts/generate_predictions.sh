@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# Copyright 2020 (c) Cognizant Digital Business, Evolutionary AI. All rights reserved. Issued under the Apache 2.0 License.
 
 # This is a wrapper script for inference (generating predictions). Ultimately it runs the local predict.py module
 # which is expected to exist. See prediction_module below.
@@ -28,16 +29,16 @@ prediction_module="$HOME/work/predict.py"
 # Get latest validation module from base library (sandboxes in general have out of date base libraries)
 # Overlays the current predictor_validation.py module in the local repo clone dir
 validation_module=$HOME/work/covid_xprize/validation/predictor_validation.py
-curl --silent --show-error --output $HOME/work/covid_xprize/validation/predictor_validation.py \
-  --request GET \
-  https://github.com/leaf-ai/covid-xprize/blob/validation-main/covid_xprize/validation/predictor_validation.py
+wget --quiet \
+  --output-document "$validation_module" \
+  https://raw.githubusercontent.com/leaf-ai/covid-xprize/validation-main/covid_xprize/validation/predictor_validation.py
 
 # Run script
 # Need to set up these env vars as cron has a restricted PATH by default
 export PATH=/usr/local/bin/:$PATH
 export PYTHONPATH=/usr/local/lib/python3.7/site-packages:$PYTHONPATH
-which python
-which pip
+command -v python
+command -v pip
 python --version
 pip --version
 # Make sure minimum version of Pandas is present

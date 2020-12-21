@@ -1,3 +1,5 @@
+# Copyright 2020 (c) Cognizant Digital Business, Evolutionary AI. All rights reserved. Issued under the Apache 2.0 License.
+
 FROM python:3.7-stretch
 
 ENV HOME_DIR=/home/xprize
