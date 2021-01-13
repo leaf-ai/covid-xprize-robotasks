@@ -10,6 +10,7 @@ import argparse
 import logging
 import os
 import subprocess
+from os.path import isfile, expanduser
 
 import pandas as pd
 from pandas import DataFrame
@@ -50,7 +51,7 @@ def generate_prescriptions(requested_prescriptions_df: DataFrame, prescription_m
         LOGGER.info(f'Output file: {output_file}')
 
         # Skip if file exists already -- don't want to needlessly generate the same prescriptions again
-        if os.path.isfile(output_file):
+        if isfile(expanduser(output_file)):
             LOGGER.warning(f'Prescriptions already generated at {output_file}. Skipping.')
             continue
 
