@@ -1,3 +1,2 @@
 StartDate,EndDate,IpFile,CostFile,OutputFile
-2020-08-16,2020-08-30,2020-09-30_historical_ip.csv,ip_costs.csv,predictions/2020-08-16_2020-08-12.csv
-
+2020-12-22,2021-06-19,~/covid-xprize-robotasks-main/ips/live/20210112_080002_20201222_20210619_ips.csv,~/covid-xprize-robotasks-main/ip_costs/fixed_equal_costs.csv,~/work/prescriptions/20210112_080002_robojudge_live.csv
