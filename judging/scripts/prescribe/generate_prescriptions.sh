@@ -25,7 +25,7 @@ repo_dir="$1"
 prescriptions_file="$repo_dir/tasks/prescribe_tasks.csv"
 generate_prescriptions_wrapper="$repo_dir/judging/scripts/prescribe/generate_prescriptions.py"
 prescription_module="$HOME/work/prescribe.py"
-validation_module="$repo_dir/judging/scripts/prescribe/dummy_prescriptor_validation.py"
+validation_module="$repo_dir/judging/scripts/prescribe/prescriptor_validation.py"
 
 # Run script
 pwd

@@ -1,3 +1,12 @@
+"""
+Validates generated prescriptions.
+
+Valiation errors are written to stdout.
+
+This duplicates functionality in the prescriptor validation script in the covid-xprize repo. It is copy-pasted here
+to avoid tangling dependencies, but this could be cleaned up in future.
+"""
+
 # Copyright 2021 (c) Cognizant Digital Business, Evolutionary AI. All rights reserved. Issued under the Apache 2.0 License.
 
 import argparse
