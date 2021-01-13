@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Copyright 2020 (c) Cognizant Digital Business, Evolutionary AI. All rights reserved. Issued under the Apache 2.0 License.
+# Copyright 2021 (c) Cognizant Digital Business, Evolutionary AI. All rights reserved. Issued under the Apache 2.0 License.
 
 # This is a wrapper script for inference (generating predictions). Ultimately it runs the local predict.py module
 # which is expected to exist. See prediction_module below.
