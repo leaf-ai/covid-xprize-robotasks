@@ -34,6 +34,6 @@ command -v pip
 python --version
 pip --version
 python "$generate_prescriptions_wrapper" \
-  --requested-predictions-file "$prescriptions_file" \
+  --requested-prescriptions-file "$prescriptions_file" \
   --prescription-module "$prescription_module" \
   --validation-module "$validation_module"
