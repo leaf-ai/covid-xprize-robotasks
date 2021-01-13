@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 
 # As its name suggests, this is a bootstrap script. It is intended to be called by cron. Its sole purpose is to download
-# the latest "tasks" git repository, then hand control over to generate_predictions.sh to generate the predictions.
-# This is split into a separate script to give us flexibility in updating the main generate_predictions.sh script.
+# the latest "tasks" git repository, then hand control over to generate_predictions.sh or generate_prescriptions.sh.
+
+# This is split into a separate script to give us flexibility in updating the main scripts.
+# This file needs to be deployed *manually* to the sandboxes.
 
 # See https://www.gnu.org/software/bash/manual/html_node/The-Set-Builtin.html for what these do
 set -o errexit
@@ -10,6 +12,9 @@ set -o errtrace
 set -o nounset
 set -o pipefail
 set -o xtrace
+
+# What mode is this sandbox running in? "prescribe" or "predict"
+mode=$1
 
 export TZ=":America/Los_Angeles"
 echo "Running bootstrap at $(date)"
@@ -20,7 +25,7 @@ echo "Running bootstrap at $(date)"
 repo_name="covid-xprize-robotasks"
 
 # Use this branch from Github
-branch="main"
+branch="phase2"
 
 # Path to downloaded local repo
 repo_dir="$HOME/$repo_name-$branch"
@@ -33,11 +38,21 @@ archive_file="$HOME/$repo_name.tar.gz"
 wget --quiet --output-document "$archive_file" https://github.com/leaf-ai/$repo_name/archive/$branch.tar.gz
 
 # Unzip to destination directory
-mkdir -p "$repo_dir" && \
-  tar --overwrite --extract --directory "$HOME" --file "$archive_file" && \
+mkdir -p "$repo_dir" &&
+  tar --overwrite --extract --directory "$HOME" --file "$archive_file" &&
   rm "$archive_file"
 
-# Launch the main script
-main_script="$repo_dir"/judging/scripts/generate_predictions.sh
+# Launch the main script. The script launched will depend on which mode we're running in -- "predictions"
+# or "prescriptions"
+if [ "$mode" = "predictions" ]; then
+  main_script="$repo_dir"/judging/generate_predictions.sh
+elif [ "$mode" = "prescriptions" ]; then
+  echo "Unknown mode: $mode" >&2
+  main_script="$repo_dir"/judging/scripts/generate_prescriptions.sh
+else
+
+  exit 1
+fi
+
 chmod +x "$main_script"
 $main_script "$repo_dir"
