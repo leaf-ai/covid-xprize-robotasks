@@ -48,7 +48,7 @@ if [ "$mode" = "predictions" ]; then
   main_script="$repo_dir"/judging/generate_predictions.sh
 elif [ "$mode" = "prescriptions" ]; then
   echo "Unknown mode: $mode" >&2
-  main_script="$repo_dir"/judging/scripts/generate_prescriptions.sh
+  main_script="$repo_dir"/judging/scripts/prescribe/generate_prescriptions.sh
 else
 
   exit 1
