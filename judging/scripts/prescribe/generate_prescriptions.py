@@ -8,6 +8,7 @@ to generate the prescriptions.
 
 import argparse
 import logging
+import os
 import subprocess
 
 import pandas as pd
@@ -47,6 +48,11 @@ def generate_prescriptions(requested_prescriptions_df: DataFrame, prescription_m
         LOGGER.info(f'IP file: {ip_file}')
         LOGGER.info(f'Cost file: {cost_file}')
         LOGGER.info(f'Output file: {output_file}')
+
+        # Skip if file exists already -- don't want to needlessly generate the same prescriptions again
+        if os.path.isfile(output_file):
+            LOGGER.warning(f'Prescriptions already generated at {output_file}. Skipping.')
+            continue
 
         # Spawn an external process to generate prescriptions
         subprocess.call(
