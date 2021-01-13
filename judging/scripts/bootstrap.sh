@@ -49,10 +49,9 @@ mkdir -p "$repo_dir" &&
 if [ "$mode" = "predictions" ]; then
   main_script="$repo_dir"/judging/generate_predictions.sh
 elif [ "$mode" = "prescriptions" ]; then
-  echo "Unknown mode: $mode" >&2
   main_script="$repo_dir"/judging/scripts/prescribe/generate_prescriptions.sh
 else
-
+  echo "Unknown mode: $mode" >&2
   exit 1
 fi
 
