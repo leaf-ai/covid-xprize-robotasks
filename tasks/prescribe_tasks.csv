@@ -1,2 +1,2 @@
 StartDate,EndDate,IpFile,CostFile,OutputFile
-2020-12-22,2021-06-19,~/covid-xprize-robotasks-main/ips/live/20210112_080002_20201222_20210619_ips.csv,~/covid-xprize-robotasks-main/ip_costs/fixed_equal_costs.csv,~/work/prescriptions/20210112_080002_robojudge_live.csv
+2020-12-22,2021-06-19,~/covid-xprize-robotasks-phase2/ips/live/20210112_080002_20201222_20210619_ips.csv,~/covid-xprize-robotasks-phase2/ip_costs/fixed_equal_costs.csv,~/work/prescriptions/20210112_080002_robojudge_live.csv
