@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# Copyright 2021 (c) Cognizant Digital Business, Evolutionary AI. All rights reserved. Issued under the Apache 2.0 License.
+
 # Landing pad for the schedule job. Does nothing but launch bootstrap for predictions or prescriptions
 # *and capture logging*
 # This file needs to be deployed *manually* to the sandboxes. It is expected to be launched by a cron job

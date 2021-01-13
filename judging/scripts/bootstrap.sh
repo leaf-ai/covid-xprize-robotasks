@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# Copyright 2021 (c) Cognizant Digital Business, Evolutionary AI. All rights reserved. Issued under the Apache 2.0 License.
+
 # As its name suggests, this is a bootstrap script. It is intended to be called by cron. Its sole purpose is to download
 # the latest "tasks" git repository, then hand control over to generate_predictions.sh or generate_prescriptions.sh.
 
