@@ -27,7 +27,7 @@ echo "Running bootstrap at $(date)"
 repo_name="covid-xprize-robotasks"
 
 # Use this branch from Github
-branch="phase2"
+branch="main"
 
 # Path to downloaded local repo
 repo_dir="$HOME/$repo_name-$branch"
