@@ -27,13 +27,28 @@ generate_prescriptions_wrapper="$repo_dir/judging/scripts/prescribe/generate_pre
 prescription_module="$HOME/work/prescribe.py"
 validation_module="$repo_dir/judging/scripts/prescribe/prescriptor_validation.py"
 
-# Run script
+# Print out some environment diagnostics
 pwd
 command -v python
 command -v pip
 python --version
 pip --version
-python "$generate_prescriptions_wrapper" \
-  --requested-prescriptions-file "$prescriptions_file" \
-  --prescription-module "$prescription_module" \
-  --validation-module "$validation_module"
+
+# Temporarily disable errexit as we want to detect when flock fails so we can log a message
+set +o errexit
+
+# Run script within flock to prevent multiple instances if jobs overrun
+flock --nonblock /tmp/robojudge.lock \
+  python "$generate_prescriptions_wrapper" \
+    --requested-prescriptions-file "$prescriptions_file" \
+    --prescription-module "$prescription_module" \
+    --validation-module "$validation_module"
+retVal=$?
+
+if [ $retVal -ne 0 ]; then
+    echo "Unable to acquire lock. Previous job still running?"
+    echo "Processes:"
+    ps afx
+fi
+
+set -o errexit
