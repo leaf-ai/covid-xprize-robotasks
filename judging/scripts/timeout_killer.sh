@@ -9,7 +9,8 @@
 # The killing is done abruptly with SIGKILL so the output from the terminated process will be in an indeterminate
 # state.
 #
-# Information about the kill is written to stdout
+# Information about the kill is written to stderr (and will be picked up in the log file of the main process, assuming
+# stderr is redirected.)
 
 # See https://www.gnu.org/software/bash/manual/html_node/The-Set-Builtin.html for what these do
 set -o errexit
@@ -21,18 +22,15 @@ set -o xtrace
 pid=$1
 
 # Allow this amount of time before killing the job
-KILL_AFTER=5s
+KILL_AFTER=6.5h
 
 # Wait until designated time has elapsed
 sleep $KILL_AFTER
 
 # If it's still running, kill it
-if ps -p $pid > /dev/null
+session_leader=$(ps j $$ | tail -n 1 | awk '{print $4}')
+if ps -p "$session_leader" > /dev/null
 then
    echo "$(date) Timeout ($KILL_AFTER) has elapsed and job is still running. Killing PID $pid" >&2
-   # enable the built-in version so we can use the "negative pid to kill children" trick
-   enable kill
-   kill -KILL -$pid
+   /bin/kill -KILL -- -"$session_leader"
 fi
-
-

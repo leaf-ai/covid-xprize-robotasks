@@ -1,3 +1,3 @@
 StartDate,EndDate,IpFile,CostFile,OutputFile
-2021-02-15,2021-05-15,~/covid-xprize-robotasks-timeout/ips/prescriptions/uk_future_test_ips.csv,~/covid-xprize-robotasks-timeout/ip_costs/fixed_equal_costs.csv,~/work/prescriptions/uk_future_test_task.csv
-2021-01-01,2021-03-31,~/covid-xprize-robotasks-timeout/ips/prescriptions/all_2020_ips.csv,~/covid-xprize-robotasks-timeout/ip_costs/uniform_random_costs.csv,~/work/prescriptions/all_2021q1_test_task.csv
+2021-02-15,2021-05-15,~/covid-xprize-robotasks-main/ips/prescriptions/uk_future_test_ips.csv,~/covid-xprize-robotasks-main/ip_costs/fixed_equal_costs.csv,~/work/prescriptions/uk_future_test_task.csv
+2021-01-01,2021-03-31,~/covid-xprize-robotasks-main/ips/prescriptions/all_2020_ips.csv,~/covid-xprize-robotasks-main/ip_costs/uniform_random_costs.csv,~/work/prescriptions/all_2021q1_test_task.csv
