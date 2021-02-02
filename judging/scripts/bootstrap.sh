@@ -44,7 +44,7 @@ mkdir -p "$repo_dir" &&
   tar --overwrite --extract --directory "$HOME" --file "$archive_file" &&
   rm "$archive_file"
 
-# Figure out which script to launch. The script launched will depend on which mode we're running in -- "predictions"
+# Launch the main script. The script launched will depend on which mode we're running in -- "predictions"
 # or "prescriptions"
 if [ "$mode" = "predictions" ]; then
   main_script="$repo_dir"/judging/generate_predictions.sh
@@ -55,11 +55,5 @@ else
   exit 1
 fi
 
-# Launch timeout monitor
-timeout_script="$repo_dir"/judging/scripts/timeout_killer.sh
-chmod +x "timeout_script"
-$timeout_script $$ &
-
-# Launch main script
 chmod +x "$main_script"
 $main_script "$repo_dir"
