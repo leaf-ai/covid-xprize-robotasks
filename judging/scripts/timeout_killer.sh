@@ -30,6 +30,8 @@ sleep $KILL_AFTER
 if ps -p $pid > /dev/null
 then
    echo "$(date) Timeout ($KILL_AFTER) has elapsed and job is still running. Killing PID $pid" >&2
+   # enable the built-in version so we can use the "negative pid to kill children" trick
+   enable kill
    kill -KILL -$pid
 fi
 
