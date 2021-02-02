@@ -21,7 +21,7 @@ set -o xtrace
 pid=$1
 
 # Allow this amount of time before killing the job
-KILL_AFTER=5m
+KILL_AFTER=5s
 
 # Wait until designated time has elapsed
 sleep $KILL_AFTER
