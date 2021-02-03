@@ -20,7 +20,7 @@ set -o pipefail
 set -o xtrace
 
 # Allow this amount of time before killing the job
-KILL_AFTER=6.5h
+KILL_AFTER=30s
 
 # Wait until designated time has elapsed
 sleep $KILL_AFTER
