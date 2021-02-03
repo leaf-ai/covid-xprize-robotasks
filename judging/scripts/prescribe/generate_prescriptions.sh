@@ -40,7 +40,7 @@ set +o errexit
 # Launch timeout monitor
 timeout_script="$repo_dir"/judging/scripts/timeout_killer.sh
 chmod +x "$timeout_script"
-$timeout_script $$ &
+$timeout_script &
 
 # Run script within flock to prevent multiple instances if jobs overrun
 flock --nonblock /tmp/robojudge.lock \
