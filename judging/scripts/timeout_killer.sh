@@ -19,8 +19,6 @@ set -o nounset
 set -o pipefail
 set -o xtrace
 
-pid=$1
-
 # Allow this amount of time before killing the job
 KILL_AFTER=6.5h
 
@@ -31,6 +29,6 @@ sleep $KILL_AFTER
 session_leader=$(ps j $$ | tail -n 1 | awk '{print $4}')
 if ps -p "$session_leader" > /dev/null
 then
-   echo "$(date) Timeout ($KILL_AFTER) has elapsed and job is still running. Killing PID $pid" >&2
+   echo "$(date) Timeout ($KILL_AFTER) has elapsed and job is still running. Killing PID $session_leader" >&2
    /bin/kill -KILL -- -"$session_leader"
 fi
