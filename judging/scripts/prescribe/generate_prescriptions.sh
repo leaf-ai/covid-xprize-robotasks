@@ -42,6 +42,10 @@ timeout_script="$repo_dir"/judging/scripts/timeout_killer.sh
 chmod +x "$timeout_script"
 $timeout_script &
 
+# Clean up timeout monitor process on exit
+timeout_script_pid=$!
+trap 'kill -KILL $timeout_script_pid' EXIT
+
 # Run script within flock to prevent multiple instances if jobs overrun
 flock --nonblock /tmp/robojudge.lock \
   python "$generate_prescriptions_wrapper" \
