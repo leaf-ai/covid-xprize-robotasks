@@ -1,0 +1,13 @@
+{
+    "name": "day_01_england_20201101_ones",
+    "output_file_name": "day_01_england_20201101_ones.csv",
+    "start_date": "2020-11-01",
+    "end_date": "2021-01-29",
+    "nb days": 90,
+    "geos_file": "/Users/m_754337/workspace/covid-xprize-judging/judging/data/england.csv",
+    "costs_type": "ones",
+    "ips_path": "/Users/m_754337/workspace/covid-xprize-robotasks/ips/prescriptions/day_01_england_20201101_ones_ips.csv",
+    "costs_path": "/Users/m_754337/workspace/covid-xprize-robotasks/ip_costs/day_01_england_20201101_ones_costs.csv",
+    "task_schedule_path": "/Users/m_754337/workspace/covid-xprize-robotasks/tasks/prescriptions/day_01_england_20201101_ones_task.csv",
+    "task_desc_path": "/Users/m_754337/workspace/covid-xprize-robotasks/tasks/prescriptions/day_01_england_20201101_ones_task_desc.csv"
+}
