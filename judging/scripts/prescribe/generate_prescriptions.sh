@@ -44,7 +44,7 @@ $timeout_script &
 
 # Clean up timeout monitor process on exit
 timeout_script_pid=$!
-trap 'kill -KILL $timeout_script_pid' EXIT
+trap 'pkill -KILL --parent $timeout_script_pid' EXIT
 
 # Run script within flock to prevent multiple instances if jobs overrun
 flock --nonblock /tmp/robojudge.lock \
