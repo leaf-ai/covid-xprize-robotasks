@@ -1,3 +1,4 @@
 StartDate,EndDate,IpFile,CostFile,OutputFile
 2020-11-01,2021-01-29,~/covid-xprize-robotasks-main/ips/prescriptions/day_01_england_20201101_ones_ips.csv,~/covid-xprize-robotasks-main/ip_costs/day_01_england_20201101_ones_costs.csv,~/work/prescriptions/day_01_england_20201101_ones.csv
 2020-11-01,2021-01-29,~/covid-xprize-robotasks-main/ips/prescriptions/day_01_england_20201101_uniform_ips.csv,~/covid-xprize-robotasks-main/ip_costs/day_01_england_20201101_uniform_costs.csv,~/work/prescriptions/day_01_england_20201101_uniform.csv
+2021-02-01,2021-05-01,~/covid-xprize-robotasks-main/ips/prescriptions/day_02_world_20210201_ones_ips.csv,~/covid-xprize-robotasks-main/ip_costs/day_02_world_20210201_ones_costs.csv,~/work/prescriptions/day_02_world_20210201_ones.csv
