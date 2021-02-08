@@ -1,0 +1,14 @@
+{
+    "name": "day_05_world_20200605_ones",
+    "output_file_name": "day_05_world_20200605_ones.csv",
+    "start_date": "2020-06-05",
+    "end_date": "2020-09-02",
+    "nb days": 90,
+    "geos_file": "/Users/m_754337/workspace/covid-xprize-judging/judging/data/countries_regions.csv",
+    "costs_type": "ones",
+    "ips_path": "/Users/m_754337/workspace/covid-xprize-robotasks/ips/prescriptions/day_05_world_20200605_ones_ips.csv",
+    "costs_path": "/Users/m_754337/workspace/covid-xprize-robotasks/ip_costs/day_05_world_20200605_ones_costs.csv",
+    "task_schedule_path": "/Users/m_754337/workspace/covid-xprize-robotasks/tasks/prescriptions/day_05_world_20200605_ones_task.csv",
+    "task_desc_path": "/Users/m_754337/workspace/covid-xprize-robotasks/tasks/prescriptions/day_05_world_20200605_ones_task_desc.csv",
+    "tasks_file_path": "/Users/m_754337/workspace/covid-xprize-robotasks/tasks/prescribe_tasks.csv"
+}
