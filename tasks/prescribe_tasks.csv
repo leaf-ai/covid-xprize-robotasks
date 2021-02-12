@@ -1,4 +1,6 @@
 StartDate,EndDate,IpFile,CostFile,OutputFile
+2021-02-01,2021-05-01,~/covid-xprize-robotasks-main/ips/prescriptions/day_02_world_20210201_ones_ips.csv,~/covid-xprize-robotasks-main/ip_costs/day_02_world_20210201_ones_costs.csv,~/work/prescriptions/day_02_world_20210201_ones.csv
+2021-02-01,2021-05-01,~/covid-xprize-robotasks-main/ips/prescriptions/day_02_world_20210201_uniform_ips.csv,~/covid-xprize-robotasks-main/ip_costs/day_02_world_20210201_uniform_costs.csv,~/work/prescriptions/day_02_world_20210201_uniform.csv
 2020-09-02,2020-11-30,~/covid-xprize-robotasks-main/ips/prescriptions/day_03_world_20200902_ones_ips.csv,~/covid-xprize-robotasks-main/ip_costs/day_03_world_20200902_ones_costs.csv,~/work/prescriptions/day_03_world_20200902_ones.csv
 2020-09-02,2020-11-30,~/covid-xprize-robotasks-main/ips/prescriptions/day_03_world_20200902_uniform_ips.csv,~/covid-xprize-robotasks-main/ip_costs/day_03_world_20200902_uniform_costs.csv,~/work/prescriptions/day_03_world_20200902_uniform.csv
 2020-04-09,2020-07-07,~/covid-xprize-robotasks-main/ips/prescriptions/day_04_world_20200409_ones_ips.csv,~/covid-xprize-robotasks-main/ip_costs/day_04_world_20200409_ones_costs.csv,~/work/prescriptions/day_04_world_20200409_ones.csv
