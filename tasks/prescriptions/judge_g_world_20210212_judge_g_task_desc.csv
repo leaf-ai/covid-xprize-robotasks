@@ -1,0 +1,14 @@
+{
+    "name": "judge_g_world_20210212_judge_g",
+    "output_file_name": "judge_g_world_20210212_judge_g.csv",
+    "start_date": "2021-02-12",
+    "end_date": "2021-05-12",
+    "nb days": 90,
+    "geos_file": "/Users/m_754337/workspace/covid-xprize-judging/judging/data/countries_regions.csv",
+    "costs_type": "judge_g",
+    "ips_path": "/Users/m_754337/workspace/covid-xprize-robotasks/ips/prescriptions/judge_g_world_20210212_judge_g_ips.csv",
+    "costs_path": "/Users/m_754337/workspace/covid-xprize-robotasks/ip_costs/judge_g_world_20210212_judge_g_costs.csv",
+    "task_schedule_path": "/Users/m_754337/workspace/covid-xprize-robotasks/tasks/prescriptions/judge_g_world_20210212_judge_g_task.csv",
+    "task_desc_path": "/Users/m_754337/workspace/covid-xprize-robotasks/tasks/prescriptions/judge_g_world_20210212_judge_g_task_desc.csv",
+    "tasks_file_path": "/Users/m_754337/workspace/covid-xprize-robotasks/tasks/prescribe_tasks.csv"
+}
