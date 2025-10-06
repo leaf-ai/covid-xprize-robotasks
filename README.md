@@ -1,4 +1,7 @@
 # covid-xprize-robotasks repository
+
+**This repository has been archived.**
+
 For uploading task files indicating which predictions teams should generate, 
 and intervention plans to be used to make predictions. 
 
